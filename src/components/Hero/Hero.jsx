@@ -1,7 +1,7 @@
 import SearchBook from "./SearchBook";
 import SortBy from "./SortBy";
 
-const Hero = () => {
+const Hero = ({ onSearch, searchQuery }) => {
   const date = new Date().getFullYear();
   return (
     <section className="mb-8 lg:mb-10 mx-auto max-w-7xl">
@@ -12,7 +12,7 @@ const Hero = () => {
             Trending Books of the Year
           </h2>
           {/* Search */}
-          <SearchBook />
+          <SearchBook onSearch={onSearch} searchQuery={searchQuery} />
         </div>
         {/* Sort */}
         <SortBy />

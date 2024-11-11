@@ -16,8 +16,8 @@ const BookItem = ({ book }) => {
         <h4 className="text-lg font-bold lg:text-xl">{name}</h4>
         <p className="text-xs lg:text-sm">
           By : <span>{author}</span>
-          <p className="text-xs lg:text-sm">Pub. Year : {publishedYear}</p>
         </p>
+        <p className="text-xs lg:text-sm">Pub. Year : {publishedYear}</p>
         <div className="flex items-center justify-between">
           <h4 className="text-lg font-bold lg:text-xl">${price}</h4>
           {/* stars */}

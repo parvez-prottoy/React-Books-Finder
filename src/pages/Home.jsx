@@ -6,11 +6,15 @@ import booksData from "../db/booksData";
 
 const Home = () => {
   const [books, setBooks] = useState([...booksData]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const handleSearch = (searchQuery) => {
+    setSearchQuery(searchQuery);
+  };
   return (
     <>
       <Layout>
-        <Hero />
-        <BooksList books={books} />
+        <Hero onSearch={handleSearch} searchQuery={searchQuery} />
+        <BooksList searchQuery={searchQuery} books={books} />
       </Layout>
     </>
   );
