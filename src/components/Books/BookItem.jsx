@@ -1,33 +1,31 @@
 import React from "react";
 import CartSvg from "../UI/svg/CartSvg";
 import FavoriteSvg from "../UI/svg/FavoriteSvg";
+import starSvg from "../../assets/star.svg";
 
-const BookItem = () => {
+const BookItem = ({ book }) => {
+  const { thumbnail, name, author, publishedYear, price, rating } = book || {};
   return (
     <div className="space-y-3">
       {/* thumbnail */}
       <div className="flex items-center justify-center rounded-md border border-[#324251]/30 bg-white p-4">
-        <img
-          className="max-w-[144px]"
-          src="./assets/book.png"
-          alt="book name"
-        />
+        <img className="max-w-[144px]" src={thumbnail} alt={name} />
       </div>
       {/* info */}
       <div className="space-y-3">
-        <h4 className="text-lg font-bold lg:text-xl">JavaScript and Jquery</h4>
+        <h4 className="text-lg font-bold lg:text-xl">{name}</h4>
         <p className="text-xs lg:text-sm">
-          By : <span>Jon Duckett</span>
+          By : <span>{author}</span>
+          <p className="text-xs lg:text-sm">Pub. Year : {publishedYear}</p>
         </p>
         <div className="flex items-center justify-between">
-          <h4 className="text-lg font-bold lg:text-xl">$62</h4>
+          <h4 className="text-lg font-bold lg:text-xl">${price}</h4>
           {/* stars */}
           <div className="flex items-center space-x-1">
-            <img src="./assets/star.svg" />
-            <img src="./assets/star.svg" />
-            <img src="./assets/star.svg" />
-            <img src="./assets/star.svg" />
-            <span className="text-xs lg:text-sm">(4 Star)</span>
+            {[...Array(rating)].map((_, i) => (
+              <img key={i} src={starSvg} alt={`${rating} star`} />
+            ))}
+            <span className="text-xs lg:text-sm">({rating} Star)</span>
           </div>
         </div>
 
