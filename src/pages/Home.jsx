@@ -15,6 +15,17 @@ const Home = () => {
   const handleSortBy = (sortBy) => {
     setSortBy(sortBy);
   };
+  const handleFav = (id) => {
+    setBooks(
+      books.map((book) => {
+        if (book.id === id) {
+          return { ...book, favorite: !book.favorite };
+        } else {
+          return book;
+        }
+      })
+    );
+  };
   return (
     <>
       <Layout>
@@ -24,7 +35,12 @@ const Home = () => {
           onSortBy={handleSortBy}
           sortBy={sortBy}
         />
-        <BooksList searchQuery={searchQuery} sortBy={sortBy} books={books} />
+        <BooksList
+          onFav={handleFav}
+          searchQuery={searchQuery}
+          sortBy={sortBy}
+          books={books}
+        />
       </Layout>
     </>
   );

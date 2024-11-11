@@ -1,10 +1,20 @@
 import React from "react";
 import CartSvg from "../UI/svg/CartSvg";
-import FavoriteSvg from "../UI/svg/FavoriteSvg";
 import starSvg from "../../assets/star.svg";
+import FavSvg from "../UI/svg/FavSvg";
+import FavEmptySvg from "../UI/svg/FavEmptySvg";
 
-const BookItem = ({ book }) => {
-  const { thumbnail, name, author, publishedYear, price, rating } = book || {};
+const BookItem = ({ book, onFav }) => {
+  const {
+    id,
+    thumbnail,
+    name,
+    author,
+    publishedYear,
+    price,
+    rating,
+    favorite,
+  } = book || {};
   return (
     <div className="space-y-3">
       {/* thumbnail */}
@@ -34,8 +44,15 @@ const BookItem = ({ book }) => {
             <CartSvg />
             Add to Cart
           </button>
-          <button className="flex min-w-[132px] items-center justify-center gap-1 rounded-md bg-[#1C4336]/[14%] py-1.5 text-[#1C4336] transition-all hover:bg-[#1C4336]/[24%] lg:py-1.5">
-            <FavoriteSvg />
+          <button
+            onClick={() => onFav(id)}
+            className={`flex min-w-[132px] items-center justify-center gap-1 rounded-md  transition-all py-1.5 lg:py-1.5 ${
+              favorite
+                ? "bg-[#DC2954]/[14%]  text-[#DC2954] hover:bg-[#DC2954]/[24%]"
+                : "bg-[#1C4336]/[14%]  text-[#1C4336] hover:bg-[#1C4336]/[24%]"
+            }`}
+          >
+            {favorite ? <FavSvg /> : <FavEmptySvg />}
             Favorite
           </button>
         </div>
