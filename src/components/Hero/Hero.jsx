@@ -1,7 +1,7 @@
 import SearchBook from "./SearchBook";
 import SortBy from "./SortBy";
 
-const Hero = ({ onSearch, searchQuery }) => {
+const Hero = ({ onSearch, searchQuery, onSortBy, sortBy }) => {
   const date = new Date().getFullYear();
   return (
     <section className="mb-8 lg:mb-10 mx-auto max-w-7xl">
@@ -15,7 +15,7 @@ const Hero = ({ onSearch, searchQuery }) => {
           <SearchBook onSearch={onSearch} searchQuery={searchQuery} />
         </div>
         {/* Sort */}
-        <SortBy />
+        <SortBy onSortBy={onSortBy} sortBy={sortBy} />
       </div>
     </section>
   );

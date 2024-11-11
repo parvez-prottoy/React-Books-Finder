@@ -1,7 +1,9 @@
-const SortBy = () => {
+const SortBy = ({ onSortBy, sortBy }) => {
   return (
     <div className="flex items-stretch space-x-3">
       <select
+        onChange={(e) => onSortBy(e.target.value)}
+        value={sortBy}
         className="cursor-pointer rounded-md border px-4 py-2 text-center text-gray-600"
         name="sortBy"
         id="sortBy"

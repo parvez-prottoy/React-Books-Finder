@@ -7,14 +7,24 @@ import booksData from "../db/booksData";
 const Home = () => {
   const [books, setBooks] = useState([...booksData]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [sortBy, setSortBy] = useState("");
+  // handlers
   const handleSearch = (searchQuery) => {
     setSearchQuery(searchQuery);
+  };
+  const handleSortBy = (sortBy) => {
+    setSortBy(sortBy);
   };
   return (
     <>
       <Layout>
-        <Hero onSearch={handleSearch} searchQuery={searchQuery} />
-        <BooksList searchQuery={searchQuery} books={books} />
+        <Hero
+          onSearch={handleSearch}
+          searchQuery={searchQuery}
+          onSortBy={handleSortBy}
+          sortBy={sortBy}
+        />
+        <BooksList searchQuery={searchQuery} sortBy={sortBy} books={books} />
       </Layout>
     </>
   );
